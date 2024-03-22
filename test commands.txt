@@ -1,0 +1,51 @@
+aws cognito-idp sign-up \
+  --region us-east-1 \
+  --client-id 4648gq5tv6136oripk4e8on6fa \
+  --username admin@example.com \
+  --password Passw0rd!
+
+aws cognito-idp admin-confirm-sign-up \
+  --region us-east-1 \
+  --user-pool-id us-east-1_ENuonUVE4 \
+  --username admin@example.com
+
+#create
+pnpm dlx aws-api-gateway-cli-test \
+--user-pool-id='us-east-1_ENuonUVE4' \
+--app-client-id='4648gq5tv6136oripk4e8on6fa' \
+--cognito-region='us-east-1' \
+--identity-pool-id='us-east-1:f2306746-4c7f-4a07-acee-6b05816b425f' \
+--invoke-url='https://1f96clbjh0.execute-api.us-east-1.amazonaws.com/' \
+--api-gateway-region='us-east-1' \
+--username='admin@example.com' \
+--password='Passw0rd!' \
+--path-template='notes' \
+--method='POST' \
+--body='{"content":"hello world","attachment":"hello.jpg"}'
+
+#get
+pnpm dlx aws-api-gateway-cli-test \
+--user-pool-id='us-east-1_ENuonUVE4' \
+--app-client-id='4648gq5tv6136oripk4e8on6fa' \
+--cognito-region='us-east-1' \
+--identity-pool-id='us-east-1:f2306746-4c7f-4a07-acee-6b05816b425f' \
+--invoke-url='https://1f96clbjh0.execute-api.us-east-1.amazonaws.com/' \
+--api-gateway-region='us-east-1' \
+--username='admin@example.com' \
+--password='Passw0rd!' \
+--path-template='notes/5f29f460-e88a-11ee-980a-513bfc0c53ee' \
+--method='GET'
+
+#list
+pnpm dlx aws-api-gateway-cli-test \
+--user-pool-id='us-east-1_ENuonUVE4' \
+--app-client-id='4648gq5tv6136oripk4e8on6fa' \
+--cognito-region='us-east-1' \
+--identity-pool-id='us-east-1:f2306746-4c7f-4a07-acee-6b05816b425f' \
+--invoke-url='https://1f96clbjh0.execute-api.us-east-1.amazonaws.com/' \
+--api-gateway-region='us-east-1' \
+--username='admin@example.com' \
+--password='Passw0rd!' \
+--path-template='notes' \
+--method='GET'
+
