@@ -49,3 +49,16 @@ pnpm dlx aws-api-gateway-cli-test \
 --path-template='notes' \
 --method='GET'
 
+#billing
+pnpm dlx aws-api-gateway-cli-test \
+--user-pool-id='us-east-1_ENuonUVE4' \
+--app-client-id='4648gq5tv6136oripk4e8on6fa' \
+--cognito-region='us-east-1' \
+--identity-pool-id='us-east-1:f2306746-4c7f-4a07-acee-6b05816b425f' \
+--invoke-url='https://1f96clbjh0.execute-api.us-east-1.amazonaws.com/' \
+--api-gateway-region='us-east-1' \
+--username='admin@example.com' \
+--password='Passw0rd!' \
+--path-template='billing' \
+--method='POST' \
+--body='{"source":"tok_visa","storage":21}'
